@@ -53,4 +53,18 @@ body {
   gap: 10px;
 }
 
+#tax{
+  display: grid;
+  grid-template-columns: (3, 1fr);
+  background-color: #459976;
+  width: 100px;
+  height: 50px;
+  margin: auto;
+  text-align: center;
+  align-content: center;
+  border-radius: 10px;
+  font-size: 2rem;
+
+}
+
 

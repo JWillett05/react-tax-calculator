@@ -9,12 +9,24 @@ function App() {
         num: "", // entered value
         res: "" // calculated value
     });
+    
+    const btnValues = [
+        ["C", "%", "/"],
+        [7, 8, 9, "X"],
+        [4, 5, 6, "-"],
+        [1, 2, 3, "+"],
+        [0, ".", "="],
+      ];
+
+    function handleClick(){
+
+    }
 
     return (
         <div>
             <Header />
-            <CalcButtons />
             <Result value={calc.num ? calc.num : calc.res} />
+            <CalcButtons onClick={handleClick}/>
         </div>
     );
 }
