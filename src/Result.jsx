@@ -1,10 +1,11 @@
 export default function Result(){
 
-    return(
-        
-        <div id="result">
-            <h1>0</h1>
-            
-        </div>
-    )
+    const Result = ({ value }) => {
+            return (
+              <div id="result-number">
+                {value}
+              </div>
+            );
+          };
+          
 }

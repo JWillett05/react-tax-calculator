@@ -1,4 +1,4 @@
-export default function CalcButtons({children}){
+export default function CalcButtons({children, onSelect}){
     function handleClick(){
         console.log("hello")
     }
