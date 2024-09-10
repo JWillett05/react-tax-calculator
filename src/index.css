@@ -3,7 +3,7 @@ body {
   font-family: 'Quicksand', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: radial-gradient(#4b504e, #1a1f1d);
+  background: radial-gradient(#474949, #303332);
   color: #71eed1;
   min-height: 100vh;
 }
@@ -15,29 +15,33 @@ body {
   font-size: 50px;
 }
 
-#result{
-  text-align: center;
-  margin: auto;
-  font-size: 30px;
-}
-
-
-
 #calc{
   margin: auto;
   max-width: fit-content;
-  background-color: rgb(118, 129, 139);
+  background-color: rgb(101, 106, 110);
 
 }
 
+
+#result{
+  background-color: rgb(131, 129, 127);
+  height: 100px;
+  width: auto;
+  align-self: center;
+  text-align: center;
+  margin: auto;
+  font-size: 3rem;
+}
+
+
 #button-char{
-  background-color: #477764;
+  background-color: #426154;
   width: 100px;
   height: 100px;
   margin: auto;
   text-align: center;
   align-content: center;
-  border-radius: 50px;
+  border-radius: 10px;
   font-size: 3rem;
 
 }
@@ -48,3 +52,5 @@ body {
   padding: 25px;
   gap: 10px;
 }
+
+
