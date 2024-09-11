@@ -18,7 +18,12 @@ function App() {
             });
         } else if (value === '=') {
             try {
-                const result = eval(calc.num.replace('X', '*').replace('%', '/'));
+                const expression = calc.num.replace('X', '*').replace('%', '/');
+                console.log("Expression to evaluate:", expression);
+                
+                const result = eval(expression);
+                console.log("Evaluation result:", result);
+                
                 setCalc({
                     ...calc,
                     res: result.toString(),
@@ -44,19 +49,24 @@ function App() {
                 ...calc,
                 num: calc.num + operator
             });
+        } else if (value === '.') {
+            if (!calc.num.includes('.')) {
+                setCalc({
+                    ...calc,
+                    num: calc.num + value
+                });
+            }
         }
-
-        console.log(value);
+    
+        console.log("Current state:", calc);
     }
 
     return (
-        <div>
+        <>
             <Header />
             <Result value={calc.num ? calc.num : calc.res} />
-            <div>
-                <CalcButtons onClick={handleClick} />
-            </div>
-        </div>
+            <CalcButtons onClick={handleClick} />
+        </>
     );
 }
 
