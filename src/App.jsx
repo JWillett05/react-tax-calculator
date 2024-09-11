@@ -3,11 +3,14 @@ import Header from './Header.jsx';
 import CalcButtons from './CalcButtons.jsx';
 import Result from './Result.jsx';
 
+
 function App() {
     const [calc, setCalc] = useState({
         sign: "", // selected sign
         num: "0", // entered value
-        res: "0" // calculated value
+        res: "0", // calculated value
+        hasDec: false,
+        operatorUsed: false
     });
 
     function handleClick(value) {
@@ -28,47 +31,51 @@ function App() {
                 setCalc({
                     ...calc,
                     res: result.toString(),  
-                    num: result.toString()  
+                    num: result.toString(),
+                    hasDec: false,
+                    operatorUsed: false 
                 });
             } catch (error) {
                 console.error("Cannot Evaluate Error.", error);
                 setCalc({
                     ...calc,
                     res: "Error",
-                    num: "0"
+                    num: "0",
+                    hasDec: false,
+                    operatorUsed: false
                 });
             }
         } else if (value === 'C') {
             setCalc({
                 sign: "",
                 num: "0",
-                res: "0"
+                res: "0",
+                hasDec: false,
+                operatorUsed: false
             });
+
         } else if (['+', '-', 'X', '%'].includes(value)) {
             const operator = value === 'X' ? '*' : value === '%' ? '/' : value;
             
-            if (calc.res !== '0'){
                 setCalc({
                     ...calc,
-                    num: calc.res + operator, 
-                    res: '0'
-                })
+                    num: calc.res !== '0' ? calc.res + operator : calc.num + operator,
+                    res: '0',
+                    hasDec: false,
+                    operatorUsed: true
+                });
 
-            } else {
-                setCalc({
-                    ...calc,
-                    num: calc.num + operator
-                })
+            } 
             
-            }
-        } else if (value === '.') {
-            if (!calc.num.includes('.')) {
+            
+            else if (value === '.' && !calc.hasDec) {
                 setCalc({
                     ...calc,
-                    num: calc.num + value
+                    num: calc.num + value,
+                    hasDec: true
                 });
             }
-        }
+        
 
         console.log("Current state:", calc);
     }
