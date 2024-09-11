@@ -32,6 +32,12 @@ function App() {
                     num: "0"
                 });
             }
+        } else if (value === 'C') {
+            setCalc({
+                sign: "",
+                num: "0",
+                res: "0"
+            });
         } else if (['+', '-', 'X', '%'].includes(value)) {
             const operator = value === 'X' ? '*' : value === '%' ? '/' : value;
             setCalc({
@@ -47,7 +53,9 @@ function App() {
         <div>
             <Header />
             <Result value={calc.num ? calc.num : calc.res} />
-            <CalcButtons onClick={handleClick} />
+            <div>
+                <CalcButtons onClick={handleClick} />
+            </div>
         </div>
     );
 }
