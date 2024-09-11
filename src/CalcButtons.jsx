@@ -6,11 +6,15 @@ export default function CalcButtons({ onClick }) {
 
     
     return (
+        <div>
+                <div className="top-buttons" >
+                <button onClick={() => handleClick('C')} className="C">Clear</button>
+                <button onClick={() => handleClick('Tax -')} id="tax">Tax -</button>
+                <button onClick={() => handleClick('Tax +')} id="tax">Tax +</button> 
+            </div>
         <div id="calc">
-            <div id="buttons" >
-            {/* <button onClick={() => handleClick('C')} id="tax">C</button>
-            <button onClick={() => handleClick('Tax -')} id="tax">Tax -</button>
-            <button onClick={() => handleClick('Tax +')} id="tax">Tax +</button> */}
+        <div className="buttons" >
+            
 
                 <button onClick={() => handleClick('1')} id="button-char">1</button>
                 <button onClick={() => handleClick('2')} id="button-char">2</button>
@@ -29,6 +33,7 @@ export default function CalcButtons({ onClick }) {
                 <button onClick={() => handleClick('=')} id="button-char">=</button>
                 <button onClick={() => handleClick('+')} id="button-char">+</button>
             </div>
+        </div>
         </div>
     );
 }
