@@ -10,48 +10,44 @@ function App() {
         res: "0" // calculated value
     });
 
-
-
-    function handleClick(value){
+    function handleClick(value) {
         if (!isNaN(value)) {
             setCalc({
                 ...calc,
-                num:calc.num === "0" ? (value) : calc.num + value
+                num: calc.num === "0" ? value : calc.num + value
             });
-        } else if (value === '='){
+        } else if (value === '=') {
             try {
+                const result = eval(calc.num.replace('X', '*').replace('%', '/'));
                 setCalc({
                     ...calc,
-                    res: (calc.num),
+                    res: result.toString(),
                     num: "0"
                 });
             } catch (error) {
-                console.error("Cannot Evaluate Error.", error)
+                console.error("Cannot Evaluate Error.", error);
                 setCalc({
                     ...calc,
-                    res:"Error",
-                    num:"0"
-                })
+                    res: "Error",
+                    num: "0"
+                });
             }
-        }  else if (['+','-', 'X', '%'].includes(value)){
-            const operator = value ==='X' ? '*' : value === '%' ? '/': value;
+        } else if (['+', '-', 'X', '%'].includes(value)) {
+            const operator = value === 'X' ? '*' : value === '%' ? '/' : value;
             setCalc({
                 ...calc,
                 num: calc.num + operator
             });
         }
 
-
-        console.log(value)
+        console.log(value);
     }
+
     return (
         <div>
             <Header />
             <Result value={calc.num ? calc.num : calc.res} />
-            <div>
-
-            </div>
-            <CalcButtons onClick={handleClick}/>
+            <CalcButtons onClick={handleClick} />
         </div>
     );
 }
