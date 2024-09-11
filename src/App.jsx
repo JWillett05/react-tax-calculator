@@ -6,20 +6,25 @@ import Result from './Result.jsx';
 function App() {
     const [calc, setCalc] = useState({
         sign: "", // selected sign
-        num: "", // entered value
+        num: "0", // entered value
         res: "" // calculated value
     });
+
+
     
-    const btnValues = [
-        ["C", "%", "/"],
-        [7, 8, 9, "X"],
-        [4, 5, 6, "-"],
-        [1, 2, 3, "+"],
-        [0, ".", "="],
-      ];
 
-    function handleClick(){
 
+
+    function handleClick(value){
+        if (!isNaN(value)) {
+            setCalc({
+                ...calc,
+                num:calc.num === "0" ? (value) : calc.num + value
+            });
+        }
+
+
+        console.log(value)
     }
 
     return (
