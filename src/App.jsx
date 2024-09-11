@@ -14,7 +14,8 @@ function App() {
         if (!isNaN(value)) {
             setCalc({
                 ...calc,
-                num: calc.num === "0" ? value : calc.num + value
+                num: calc.num === "0" && calc.res === "0" ? value : calc.num + value,
+                res: calc.res !== "0" ? "0" : calc.res 
             });
         } else if (value === '=') {
             try {
@@ -26,8 +27,8 @@ function App() {
                 
                 setCalc({
                     ...calc,
-                    res: result.toString(),
-                    num: "0"
+                    res: result.toString(),  
+                    num: result.toString()  
                 });
             } catch (error) {
                 console.error("Cannot Evaluate Error.", error);
@@ -45,10 +46,21 @@ function App() {
             });
         } else if (['+', '-', 'X', '%'].includes(value)) {
             const operator = value === 'X' ? '*' : value === '%' ? '/' : value;
-            setCalc({
-                ...calc,
-                num: calc.num + operator
-            });
+            
+            if (calc.res !== '0'){
+                setCalc({
+                    ...calc,
+                    num: calc.res + operator, 
+                    res: '0'
+                })
+
+            } else {
+                setCalc({
+                    ...calc,
+                    num: calc.num + operator
+                })
+            
+            }
         } else if (value === '.') {
             if (!calc.num.includes('.')) {
                 setCalc({
@@ -57,7 +69,7 @@ function App() {
                 });
             }
         }
-    
+
         console.log("Current state:", calc);
     }
 
