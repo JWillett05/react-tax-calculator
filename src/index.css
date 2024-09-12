@@ -21,6 +21,8 @@ body {
   max-width: fit-content;
   background-color: rgb(101, 106, 110);
   max-width: 475px;
+  border-bottom-left-radius: 20px ;
+  border-bottom-right-radius: 20px ;
 
 }
 
@@ -36,6 +38,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
 }
 
 

@@ -4,6 +4,8 @@ import CalcButtons from './CalcButtons.jsx';
 import Result from './Result.jsx';
 
 
+
+
 function App() {
     const [calc, setCalc] = useState({
         sign: "", // selected sign
@@ -20,7 +22,29 @@ function App() {
                 num: calc.num === "0" && calc.res === "0" ? value : calc.num + value,
                 res: calc.res !== "0" ? "0" : calc.res 
             });
-        } else if (value === '=') {
+            
+        }else if (value === 'Tax +') {
+                const result = (calc.num) * 1.2;  
+                setCalc({
+                    ...calc,
+                    res: result.toString(),  
+                    num: result.toString(),
+                    hasDec: false,
+                    operatorUsed: false 
+                });
+            }
+    
+            else if (value === 'Tax -') {
+                const result = (calc.num) / 1.2;  
+                setCalc({
+                    ...calc,
+                    res: result.toString(),  
+                    num: result.toString(),
+                    hasDec: false,
+                    operatorUsed: false 
+                });
+            }
+         else if (value === '=') {
             try {
                 const expression = calc.num.replace('X', '*').replace('%', '/');
                 console.log("Expression to evaluate:", expression);
@@ -53,7 +77,7 @@ function App() {
                 hasDec: false,
                 operatorUsed: false
             });
-
+    
         } else if (['+', '-', 'X', '%'].includes(value)) {
             const operator = value === 'X' ? '*' : value === '%' ? '/' : value;
             
@@ -64,9 +88,8 @@ function App() {
                     hasDec: false,
                     operatorUsed: true
                 });
-
+    
             } 
-            
             
             else if (value === '.' && !calc.hasDec) {
                 setCalc({
@@ -74,11 +97,16 @@ function App() {
                     num: calc.num + value,
                     hasDec: true
                 });
+            } else if (!calc.hasDec) {
+                setCalc({
+                    ...calc,
+                    num: calc.operatorUsed ? "." : calc.num + value,
+                    hasDec: true,
+                })
             }
-        
-
         console.log("Current state:", calc);
     }
+    
 
     return (
         <>
@@ -90,3 +118,6 @@ function App() {
 }
 
 export default App;
+
+// add tax + 0.2
+// minus tax - 0.2 / 1.2
