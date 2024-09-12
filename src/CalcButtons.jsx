@@ -1,16 +1,72 @@
+import { useEffect } from "react";
+
+
 export default function CalcButtons({ onClick }) {
     function handleClick(value) {
         onClick(value);
     }
 
+    useEffect(() =>{
+        const handleKeyPress = (e) => {
+            const key = e.key.toLowerCase();
 
+            switch (key) {
+                case 'c':
+                    handleClick('C');
+                    break;
+                case '1':
+                case '2':
+                case '3':
+                case '4':
+                case '5':
+                case '6':
+                case '7':
+                case '8':
+                case '9':
+                case '0':
+                    handleClick(key);
+                    break;
+                case '/':
+                    handleClick('%');
+                    break;
+                    case '*':
+                    handleClick('X');
+                    break;
+                    case '-':
+                    handleClick('-');
+                    break;
+                    case '+':
+                    handleClick('+');
+                    break;
+                    case 'enter':
+                    handleClick('=');
+                    break;
+                    case '#':
+                    handleClick('Tax +');
+                    break;
+                    case ";":
+                    handleClick('Tax -');
+                    break;
+                        default:
+                    break;
+            }
+        };
+        window.addEventListener('keydown', handleKeyPress)
+
+        return () => {
+            window.removeEventListener('keydown', handleKeyPress)
+        }
+    })
+    
+    
     
     return (
         <div>
                 <div className="top-buttons" >
                 <button onClick={() => handleClick('C')} className="C">Clear</button>
-                <button onClick={() => handleClick('Tax -')} id="tax">Tax -</button>
-                <button onClick={() => handleClick('Tax +')} id="tax">Tax +</button> 
+                <button onClick={() => handleClick('Tax -')} id="tax">Tax - <br/> (;)
+</button>
+                <button onClick={() => handleClick('Tax +')} id="tax">Tax + <br/> (#)</button> 
             </div>
         <div id="calc">
         <div className="buttons" >

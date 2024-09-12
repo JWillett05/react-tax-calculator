@@ -68,12 +68,12 @@ body {
   display: grid;
   background-color: #459976;
   width: 100px;
-  height: 50px;
+  height: 65px;
   margin: auto;
   text-align: center;
   align-content: center;
   border-radius: 10px;
-  font-size: 2rem;
+  font-size: 1.5rem;
 
 }
 
@@ -81,7 +81,7 @@ body {
 .C{
   background-color: #459976;
   width: 200px;
-  height: 50px;
+  height: 65px;
   margin: auto;
   text-align: center;
   align-content: center;
@@ -97,7 +97,6 @@ body {
   margin: auto;
   text-align: center;
   align-content: center;
-  font-size: 2rem;
   gap: 10px;
   margin-bottom: -30px;
   padding: 25px;

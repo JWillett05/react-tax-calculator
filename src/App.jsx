@@ -118,6 +118,3 @@ function App() {
 }
 
 export default App;
-
-// add tax + 0.2
-// minus tax - 0.2 / 1.2
