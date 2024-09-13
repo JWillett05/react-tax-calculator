@@ -11,7 +11,7 @@ export default function CalcButtons({ onClick }) {
             const key = e.key.toLowerCase();
 
             switch (key) {
-                case 'c':
+                case 'delete':
                     handleClick('C');
                     break;
                 case '1':
@@ -46,6 +46,9 @@ export default function CalcButtons({ onClick }) {
                     break;
                     case ";":
                     handleClick('Tax -');
+                    break;
+                    case '.':
+                    handleClick('.');
                     break;
                         default:
                     break;
