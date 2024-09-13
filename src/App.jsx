@@ -30,7 +30,7 @@ function App() {
                     res: result.toString(),  
                     num: result.toString(),
                     hasDec: false,
-                    operatorUsed: false,
+                    operatorUsed: false
                 });
             }
     

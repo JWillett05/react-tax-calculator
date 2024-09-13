@@ -6,52 +6,26 @@ export default function CalcButtons({ onClick }) {
         onClick(value);
     }
 
+    const operatorKeys = {
+        '+':'+',
+        '-':'-',
+        '.':'.',
+        '*':'X',
+        '/':'%',
+        ';':'Tax -',
+        '#':'Tax +',
+        'enter':'=',
+        'delete':'C'
+    }
+
     useEffect(() =>{
         const handleKeyPress = (e) => {
             const key = e.key.toLowerCase();
-
-            switch (key) {
-                case 'delete':
-                    handleClick('C');
-                    break;
-                case '1':
-                case '2':
-                case '3':
-                case '4':
-                case '5':
-                case '6':
-                case '7':
-                case '8':
-                case '9':
-                case '0':
-                    handleClick(key);
-                    break;
-                case '/':
-                    handleClick('%');
-                    break;
-                    case '*':
-                    handleClick('X');
-                    break;
-                    case '-':
-                    handleClick('-');
-                    break;
-                    case '+':
-                    handleClick('+');
-                    break;
-                    case 'enter':
-                    handleClick('=');
-                    break;
-                    case '#':
-                    handleClick('Tax +');
-                    break;
-                    case ";":
-                    handleClick('Tax -');
-                    break;
-                    case '.':
-                    handleClick('.');
-                    break;
-                        default:
-                    break;
+            if (!isNaN(Number(key))){
+                console.log(Number(key))
+                handleClick(key)
+            } else if (operatorKeys[key]) {
+                handleClick(operatorKeys[key])
             }
         };
         window.addEventListener('keydown', handleKeyPress)
