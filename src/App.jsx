@@ -20,7 +20,7 @@ function App() {
             setCalc({
                 ...calc,
                 num: calc.num === "0" && calc.res === "0" ? value : calc.num + value,
-                res: calc.res !== "0" ? "0" : calc.res 
+                res: calc.res !== "0" ? "0" : calc.res
             });
             
         }else if (value === 'Tax +') {
@@ -30,7 +30,7 @@ function App() {
                     res: result.toString(),  
                     num: result.toString(),
                     hasDec: false,
-                    operatorUsed: false 
+                    operatorUsed: false,
                 });
             }
     
