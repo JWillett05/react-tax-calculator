@@ -21,11 +21,13 @@ export default function CalcButtons({ onClick }) {
     useEffect(() =>{
         const handleKeyPress = (e) => {
             const key = e.key.toLowerCase();
-            if (!isNaN(Number(key))){
-                console.log(Number(key))
-                handleClick(key)
-            } else if (operatorKeys[key]) {
-                handleClick(operatorKeys[key])
+            const code = e.code;
+            if (!isNaN(Number(key)) || code.includes("Numpad") && !isNaN(Number(code[code.length-1]))){
+                const numKey = code.includes("Numpad") ? code[code.length - 1] : key
+                handleClick(numKey)
+
+            } else if (operatorKeys[key] || operatorKeys[code.toLowerCase()]) {
+                handleClick(operatorKeys[key] || operatorKeys[code.toLowerCase()])
             }
         };
         window.addEventListener('keydown', handleKeyPress)
