@@ -22,7 +22,6 @@ export default function CalcButtons({ onClick }) {
         const handleKeyPress = (e) => {
             const key = e.key.toLowerCase();
             if (!isNaN(Number(key))){
-                console.log(Number(key))
                 handleClick(key)
             } else if (operatorKeys[key]) {
                 handleClick(operatorKeys[key])
