@@ -22,12 +22,12 @@ export default function CalcButtons({ onClick }) {
         const handleKeyPress = (e) => {
             const key = e.key.toLowerCase();
             const code = e.code;
-            if (!isNaN(Number(key)) || code.includes("Numpad") && !isNaN(Number(code[code.length-1]))){
+            if (!isNaN(Number(key)) && code.includes("Numpad") && !isNaN(Number(code[code.length-1]))){
                 const numKey = code.includes("Numpad") ? code[code.length - 1] : key
                 handleClick(numKey)
 
-            } else if (operatorKeys[key] || operatorKeys[code.toLowerCase()]) {
-                handleClick(operatorKeys[key] || operatorKeys[code.toLowerCase()])
+            } else if (operatorKeys[key] && operatorKeys[code.toLowerCase()]) {
+                handleClick(operatorKeys[key] && operatorKeys[code.toLowerCase()])
             }
         };
         window.addEventListener('keydown', handleKeyPress)
